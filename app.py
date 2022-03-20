@@ -73,7 +73,7 @@ def main():
 
         st.markdown(f"""<style>.reportview-container {{background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})}}.sidebar .sidebar-content {{background: url(data:image/{side_bg_ext};base64,{base64.b64encode(open(side_bg, "rb").read()).decode()})}}</style>""",unsafe_allow_html=True)
     
-    
+    """
     def st_shap(plot, height=None):
         shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
         components.html(shap_html, height=height)
@@ -88,7 +88,7 @@ def main():
         p = shap.force_plot(explainer.expected_value[1], shap_values[1], data)
         return p, shap_values   
     
-
+    """
     Classifer_name=['SVC',"KNN","Random Forest"]
     st.sidebar.title('Mental Health Detection')
     st.sidebar.header('')
@@ -250,7 +250,7 @@ def main():
                          "Agreeableness_Score_Sum","Conscientiousness_Score_Sum","Corona_concern_sum" ,"OECD_insititutions_people_sum",
                          "SPS_sum","Distress_sum" ])
         
-
+        st.write("Original dataframe or User Input")
         st.write(df)    
         columns_to_scale = ['Dem_age', 'Dem_dependents', 'Dem_isolation_adults',
                             'Dem_isolation_kids', 'Trust_countrymeasure', 
@@ -281,7 +281,7 @@ def main():
             final_label = np.where(result == 1, 'Highly Afected Mental- Needs Immediate Treatment',np.where(result == 0,"Low","???????"))
 
             st.success(f'The output is {final_label}')    
-
+        """
         #explainer force_plot
         p, shap_values = explain_model_prediction(df)
         st.subheader('Model Prediction Interpretation Plot')
@@ -298,7 +298,7 @@ def main():
         fig, ax = plt.subplots(nrows=1, ncols=1)
         shap.summary_plot(shap_values[1], df, plot_type='bar')
         st.pyplot(fig)
-
+        """
 
     if add_selectbox == 'Batch':
         file_upload = st.file_uploader("Upload csv file for predictions", type=["csv"])   
