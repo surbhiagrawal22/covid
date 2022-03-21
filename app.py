@@ -1,4 +1,3 @@
-
 import numpy as np
 import pandas as pd
 import pickle
@@ -92,7 +91,7 @@ def main():
             pickle_in = open("knn_smote_classifier.pkl","rb")
             mclassifier=pickle.load(pickle_in)
             return mclassifier
-        else:     
+        elif model_option=="Random Forest":     
             pickle_in = open("rfc_smote_tomek_classifier.pkl","rb")
             mclassifier=pickle.load(pickle_in)
             return mclassifier
